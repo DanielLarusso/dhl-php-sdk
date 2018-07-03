@@ -91,10 +91,13 @@ class Filial extends Receiver
      * Alias for setFilialNumber
      *
      * @param string $filialNumber
+     * @return Filial
      */
-    public function setPostFilialNumber(string $filialNumber): void
+    public function setPostFilialNumber(string $filialNumber): Filial
     {
         $this->filialNumber = $filialNumber;
+
+        return $this;
     }
 
     /**
