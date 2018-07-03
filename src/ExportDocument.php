@@ -423,8 +423,8 @@ class ExportDocument
 
         // Add rest (Elements)
         if (null !== $this->getWithElectronicExportNotification()) {
-            $exportDocument->withElectronicExportNtfctn = new Struct\WitchElectronicExportNtfctn();
-            $exportDocument->withElectronicExportNtfctn->active = (int) $this->getWithElectronicExportNotification();
+            $exportDocument->WithElectronicExportNtfctn = new Struct\WitchElectronicExportNtfctn();
+            $exportDocument->WithElectronicExportNtfctn->active = (int) $this->getWithElectronicExportNotification();
         }
 
         // Check if child-class is being used
@@ -436,7 +436,7 @@ class ExportDocument
              * @var ExportDocPosition $exportDoc
              */
             foreach ($pos as $key => &$exportDoc) {
-                $exportDocument->exportDocPosition[$key] = $exportDoc->getStruct();
+                $exportDocument->ExportDocPosition[$key] = $exportDoc->getStruct();
             }
         }
 

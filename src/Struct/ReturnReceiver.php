@@ -11,7 +11,7 @@ class ReturnReceiver
     /**
      * @var Name
      */
-    public $name;
+    public $Name;
 
     /**
      * @var Address

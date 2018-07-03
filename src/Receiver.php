@@ -31,57 +31,57 @@ class Receiver extends SendPerson
         $receiver->name1 = $this->getName();
 
         // Communication
-        $receiver->communication = new Struct\Communication();
+        $receiver->Communication = new Struct\Communication();
 
         if (null !== $this->getPhone()) {
-            $receiver->communication->phone = $this->getPhone();
+            $receiver->Communication->phone = $this->getPhone();
         }
 
         if (null !== $this->getEmail()) {
-            $receiver->communication->email = $this->getEmail();
+            $receiver->Communication->email = $this->getEmail();
         }
 
         if (null !== $this->getContactPerson()) {
-            $receiver->communication->contactPerson = $this->getContactPerson();
+            $receiver->Communication->contactPerson = $this->getContactPerson();
         }
 
         // Address
-        $receiver->address = new Struct\Address();
+        $receiver->Address = new Struct\Address();
 
         if (null !== $this->getName2()) {
-            $receiver->address->name2 = $this->getName2();
+            $receiver->Address->name2 = $this->getName2();
         }
 
         if (null !== $this->getName3()) {
-            $receiver->address->name3 = $this->getName3();
+            $receiver->Address->name3 = $this->getName3();
         }
 
-        $receiver->address->streetName = $this->getStreetName();
-        $receiver->address->streetNumber = $this->getStreetNumber();
+        $receiver->Address->streetName = $this->getStreetName();
+        $receiver->Address->streetNumber = $this->getStreetNumber();
 
         if (null !== $this->getAddressAddition()) {
-            $receiver->address->addressAddition = $this->getAddressAddition();
+            $receiver->Address->addressAddition = $this->getAddressAddition();
         }
 
         if (null !== $this->getDispatchingInfo()) {
-            $receiver->address->dispatchingInformation = $this->getDispatchingInfo();
+            $receiver->Address->dispatchingInformation = $this->getDispatchingInfo();
         }
 
-        $receiver->address->zip = $this->getZip();
-        $receiver->address->city = $this->getLocation();
+        $receiver->Address->zip = $this->getZip();
+        $receiver->Address->city = $this->getLocation();
 
         // Origin
         if (null !== $this->getCountryISOCode()) {
-            $receiver->address->origin = new Struct\Origin();
+            $receiver->Address->Origin = new Struct\Origin();
 
             if (null !== $this->getCountry()) {
-                $receiver->address->origin->country = $this->getCountry();
+                $receiver->Address->Origin->country = $this->getCountry();
             }
 
-            $receiver->address->origin->countryISOCode = $this->getCountryISOCode();
+            $receiver->Address->Origin->countryISOCode = $this->getCountryISOCode();
 
             if (null !== $this->getState()) {
-                $receiver->address->origin->state = $this->getState();
+                $receiver->Address->Origin->state = $this->getState();
             }
         }
 

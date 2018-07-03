@@ -484,19 +484,19 @@ class ShipmentDetails
             $shipmentDetails->returnShipmentReference = $this->getReturnReference();
         }
 
-        $shipmentDetails->shipmentItem = new Struct\ShipmentItem();
-        $shipmentDetails->shipmentItem->weightInKG = $this->getWeight();
+        $shipmentDetails->ShipmentItem = new Struct\ShipmentItem();
+        $shipmentDetails->ShipmentItem->weightInKG = $this->getWeight();
 
         if (null !== $this->getLength()) {
-            $shipmentDetails->shipmentItem->lengthInCM = $this->getLength();
+            $shipmentDetails->ShipmentItem->lengthInCM = $this->getLength();
         }
 
         if (null !== $this->getWidth()) {
-            $shipmentDetails->shipmentItem->widthInCM = $this->getWidth();
+            $shipmentDetails->ShipmentItem->widthInCM = $this->getWidth();
         }
 
         if (null !== $this->getHeight()) {
-            $shipmentDetails->shipmentItem->heightInCM = $this->getHeight();
+            $shipmentDetails->ShipmentItem->heightInCM = $this->getHeight();
         }
 
         return $shipmentDetails;

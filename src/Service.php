@@ -1381,148 +1381,148 @@ class Service
                 ShipmentDetails::PRODUCT_TYPE_SAME_DAY_MESSENGER,
                 ShipmentDetails::PRODUCT_TYPE_WISH_TIME_MESSENGER
             ], true)) {
-            $service->dayOfDelivery = new Struct\DayOfDelivery();
-            $service->dayOfDelivery->active = (int) $this->getDayOfDeliveryEnabled();
-            $service->dayOfDelivery->details = $this->getDayOfDeliveryDate();
+            $service->DayOfDelivery = new Struct\DayOfDelivery();
+            $service->DayOfDelivery->active = (int) $this->getDayOfDeliveryEnabled();
+            $service->DayOfDelivery->details = $this->getDayOfDeliveryDate();
         }
 
         if (null !== $this->getDeliveryTimeframeEnabled() && \in_array($productType, [
                 ShipmentDetails::PRODUCT_TYPE_SAME_DAY_MESSENGER,
                 ShipmentDetails::PRODUCT_TYPE_WISH_TIME_MESSENGER
             ], true)) {
-            $service->deliveryTimeframe = new Struct\DeliveryTimeframe();
-            $service->deliveryTimeframe->active = (int) $this->getDeliveryTimeframeEnabled();
-            $service->deliveryTimeframe->type = $this->getDeliveryTimeframe();
+            $service->DeliveryTimeframe = new Struct\DeliveryTimeframe();
+            $service->DeliveryTimeframe->active = (int) $this->getDeliveryTimeframeEnabled();
+            $service->DeliveryTimeframe->type = $this->getDeliveryTimeframe();
         }
 
         if (null !== $this->getPreferredTimeEnabled() && \in_array($productType, [
                 ShipmentDetails::PRODUCT_TYPE_NATIONAL_PACKAGE,
                 ShipmentDetails::PRODUCT_TYPE_SAME_DAY_PACKAGE
             ], true)) {
-            $service->preferredTime = new Struct\PreferredTime();
-            $service->preferredTime->active = (int) $this->getPreferredTimeEnabled();
-            $service->preferredTime->type = $this->getPreferredTime();
+            $service->PreferredTime = new Struct\PreferredTime();
+            $service->PreferredTime->active = (int) $this->getPreferredTimeEnabled();
+            $service->PreferredTime->type = $this->getPreferredTime();
         }
 
         if (null !== $this->getIndividualSenderRequirementsEnabled() && \in_array($productType, [
                 ShipmentDetails::PRODUCT_TYPE_SAME_DAY_MESSENGER,
                 ShipmentDetails::PRODUCT_TYPE_WISH_TIME_MESSENGER
             ], true)) {
-            $service->individualSenderRequirement = new Struct\IndividualSenderRequirement();
-            $service->individualSenderRequirement->active = (int) $this->getIndividualSenderRequirementsEnabled();
-            $service->individualSenderRequirement->details = $this->getIndividualSenderRequirementsText();
+            $service->IndividualSenderRequirement = new Struct\IndividualSenderRequirement();
+            $service->IndividualSenderRequirement->active = (int) $this->getIndividualSenderRequirementsEnabled();
+            $service->IndividualSenderRequirement->details = $this->getIndividualSenderRequirementsText();
         }
 
         if (null !== $this->getPackagingReturn()) {
-            $service->packagingReturn = new Struct\PackagingReturn();
-            $service->packagingReturn->active = (int) $this->getPackagingReturn();
+            $service->PackagingReturn = new Struct\PackagingReturn();
+            $service->PackagingReturn->active = (int) $this->getPackagingReturn();
         }
 
         if (null !== $this->getReturnImmediatelyIfShipmentFailed() && ShipmentDetails::PRODUCT_TYPE_SAME_DAY_PACKAGE === $productType) {
-            $service->returnImmediately = new Struct\ReturnImmediately();
-            $service->returnImmediately->active = (int) $this->getReturnImmediatelyIfShipmentFailed();
+            $service->ReturnImmediately = new Struct\ReturnImmediately();
+            $service->ReturnImmediately->active = (int) $this->getReturnImmediatelyIfShipmentFailed();
         }
 
         if (null !== $this->getNoticeNonDeliverability()) {
-            $service->noticeOfNonDeliverability = new Struct\NoticeOfNonDeliverability();
-            $service->noticeOfNonDeliverability->active = (int) $this->getNoticeNonDeliverability();
+            $service->NoticeOfNonDeliverability = new Struct\NoticeOfNonDeliverability();
+            $service->NoticeOfNonDeliverability->active = (int) $this->getNoticeNonDeliverability();
         }
 
         if (null !== $this->getShipmentHandlingEnabled() && \in_array($productType, [
                 ShipmentDetails::PRODUCT_TYPE_SAME_DAY_MESSENGER,
                 ShipmentDetails::PRODUCT_TYPE_WISH_TIME_MESSENGER
             ], true)) {
-            $service->shipmentHandling = new Struct\ShipmentHandling();
-            $service->shipmentHandling->active = (int) $this->getShipmentHandlingEnabled();
-            $service->shipmentHandling->type = $this->getShipmentHandlingType();
+            $service->ShipmentHandling = new Struct\ShipmentHandling();
+            $service->ShipmentHandling->active = (int) $this->getShipmentHandlingEnabled();
+            $service->ShipmentHandling->type = $this->getShipmentHandlingType();
         }
 
         if (null !== $this->getEndorsementEnabled()) {
-            $service->endorsement = new Struct\Endorsement();
-            $service->endorsement->active = (int) $this->getEndorsementEnabled();
-            $service->endorsement->type = $this->getEndorsementType();
+            $service->Endorsement = new Struct\Endorsement();
+            $service->Endorsement->active = (int) $this->getEndorsementEnabled();
+            $service->Endorsement->type = $this->getEndorsementType();
         }
 
         if (null !== $this->getVisualCheckOfAgeEnabled()) {
-            $service->visualCheckOfAge = new Struct\VisualCheckOfAge();
-            $service->visualCheckOfAge->active = (int) $this->getVisualCheckOfAgeEnabled();
-            $service->visualCheckOfAge->type = $this->getVisualCheckOfAgeType();
+            $service->VisualCheckOfAge = new Struct\VisualCheckOfAge();
+            $service->VisualCheckOfAge->active = (int) $this->getVisualCheckOfAgeEnabled();
+            $service->VisualCheckOfAge->type = $this->getVisualCheckOfAgeType();
         }
 
         if (null !== $this->getPreferredLocationEnabled()) {
-            $service->preferredLocation = new Struct\PreferredLocation();
-            $service->preferredLocation->active = (int) $this->getPreferredLocationEnabled();
-            $service->preferredLocation->details = $this->getPreferredLocationDetails();
+            $service->PreferredLocation = new Struct\PreferredLocation();
+            $service->PreferredLocation->active = (int) $this->getPreferredLocationEnabled();
+            $service->PreferredLocation->details = $this->getPreferredLocationDetails();
         }
 
         if (null !== $this->getPreferredNeighbourEnabled()) {
-            $service->preferredNeighbour = new Struct\PreferredNeighbour();
-            $service->preferredNeighbour->active = (int) $this->getPreferredNeighbourEnabled();
-            $service->preferredNeighbour->details = $this->getPreferredNeighbourText();
+            $service->PreferredNeighbour = new Struct\PreferredNeighbour();
+            $service->PreferredNeighbour->active = (int) $this->getPreferredNeighbourEnabled();
+            $service->PreferredNeighbour->details = $this->getPreferredNeighbourText();
         }
 
         if (null !== $this->getPreferredDayEnabled()) {
-            $service->preferredDay = new Struct\PreferredDay();
-            $service->preferredDay->active = (int) $this->getPreferredDayEnabled();
-            $service->preferredDay->details = $this->getPreferredDayText();
+            $service->PreferredDay = new Struct\PreferredDay();
+            $service->PreferredDay->active = (int) $this->getPreferredDayEnabled();
+            $service->PreferredDay->details = $this->getPreferredDayText();
         }
 
         if (null !== $this->getPerishables()) {
-            $service->perishables = new Struct\Perishables();
-            $service->perishables->active = (int)$this->getPerishables();
+            $service->Perishables = new Struct\Perishables();
+            $service->Perishables->active = (int) $this->getPerishables();
         }
 
         if (null !== $this->getPersonalHandover()) {
-            $service->personally = new Struct\Personally();
-            $service->personally->active = (int) $this->getPersonalHandover();
+            $service->Personally = new Struct\Personally();
+            $service->Personally->active = (int) $this->getPersonalHandover();
         }
 
         if (null !== $this->getDisableNeighbourDelivery()) {
-            $service->noNeighbourDelivery = new Struct\NoNeighbourDelivery();
-            $service->noNeighbourDelivery->active = (int) $this->getDisableNeighbourDelivery();
+            $service->NoNeighbourDelivery = new Struct\NoNeighbourDelivery();
+            $service->NoNeighbourDelivery->active = (int) $this->getDisableNeighbourDelivery();
         }
 
         if (null !== $this->getNamedPersonOnly()) {
-            $service->namedPersonOnly = new Struct\NamedPersonOnly();
-            $service->namedPersonOnly->active = (int) $this->getNamedPersonOnly();
+            $service->NamedPersonOnly = new Struct\NamedPersonOnly();
+            $service->NamedPersonOnly->active = (int) $this->getNamedPersonOnly();
         }
 
         if (null !== $this->getReturnReceipt()) {
-            $service->returnReceipt = new Struct\ReturnReceipt();
-            $service->returnReceipt->active = (int)$this->getReturnReceipt();
+            $service->ReturnReceipt = new Struct\ReturnReceipt();
+            $service->ReturnReceipt->active = (int) $this->getReturnReceipt();
         }
 
         if (null !== $this->getPremium()) {
-            $service->premium = new Struct\Premium();
-            $service->premium->active = (int) $this->getPremium();
+            $service->Premium = new Struct\Premium();
+            $service->Premium->active = (int) $this->getPremium();
         }
 
         if (null !== $this->getCashOnDeliveryEnabled()) {
-            $service->cashOnDelivery = new Struct\CashOnDelivery();
-            $service->cashOnDelivery->active = (int)$this->getCashOnDeliveryEnabled();
+            $service->CashOnDelivery = new Struct\CashOnDelivery();
+            $service->CashOnDelivery->active = (int) $this->getCashOnDeliveryEnabled();
 
             if (null !== $this->getCashOnDeliveryAddFee()) {
-                $service->cashOnDelivery->addFee = $this->getCashOnDeliveryAddFee();
+                $service->CashOnDelivery->addFee = $this->getCashOnDeliveryAddFee();
             }
 
-            $service->cashOnDelivery->codAmount = $this->getCashOnDeliveryAmount();
+            $service->CashOnDelivery->codAmount = $this->getCashOnDeliveryAmount();
         }
 
         if (null !== $this->getAdditionalInsuranceEnabled()) {
-            $service->additionalInsurance = new Struct\AdditionalInsurance();
-            $service->additionalInsurance->active = (int) $this->getAdditionalInsuranceEnabled();
-            $service->additionalInsurance->insuranceAmount = $this->getAdditionalInsuranceAmount();
+            $service->AdditionalInsurance = new Struct\AdditionalInsurance();
+            $service->AdditionalInsurance->active = (int) $this->getAdditionalInsuranceEnabled();
+            $service->AdditionalInsurance->insuranceAmount = $this->getAdditionalInsuranceAmount();
         }
 
         if (null !== $this->getBulkyGoods()) {
-            $service->bulkyGoods = new Struct\BulkyGoods();
-            $service->bulkyGoods->active = (int) $this->getBulkyGoods();
+            $service->BulkyGoods = new Struct\BulkyGoods();
+            $service->BulkyGoods->active = (int) $this->getBulkyGoods();
         }
 
         if (null !== $this->getIdentCheckEnabled()) {
-            $service->identCheck = new Struct\IdentCheck();
-            $service->identCheck->active = (int)$this->getIdentCheckEnabled();
-            $service->identCheck->ident = $this->getIdentCheckObj()->getIdentStruct();
+            $service->IdentCheck = new Struct\IdentCheck();
+            $service->IdentCheck->active = (int) $this->getIdentCheckEnabled();
+            $service->IdentCheck->ident = $this->getIdentCheckObj()->getIdentStruct();
         }
 
         return $service;

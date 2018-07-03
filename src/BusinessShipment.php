@@ -845,45 +845,45 @@ class BusinessShipment extends Version
         /** @var ShipmentRequest $request */
         $request = new Struct\ShipmentRequest();
 
-        $request->version = $this->getVersionStruct();
-        $request->shipmentOrder = new Struct\ShipmentOrder();
-        $request->shipmentOrder->sequenceNumber = $this->getSequenceNumber();
+        $request->Version = $this->getVersionStruct();
+        $request->ShipmentOrder = new Struct\ShipmentOrder();
+        $request->ShipmentOrder->sequenceNumber = $this->getSequenceNumber();
 
         // Shipment
-        $request->shipmentOrder->shipment = new Struct\Shipment();
-        $request->shipmentOrder->shipment->shipmentDetails = $this->getShipmentDetails()->getStruct();
+        $request->ShipmentOrder->Shipment = new Struct\Shipment();
+        $request->ShipmentOrder->Shipment->ShipmentDetails = $this->getShipmentDetails()->getStruct();
 
         // Service
         if (null !== $this->getService()) {
-            $request->shipmentOrder->shipment->shipmentDetails->service = $this->getService()->getStruct($this->getShipmentDetails()->getProduct());
+            $request->ShipmentOrder->Shipment->ShipmentDetails->Service = $this->getService()->getStruct($this->getShipmentDetails()->getProduct());
         }
 
         // Notification
         if (null !== $this->getReceiverEmail()) {
-            $request->shipmentOrder->shipment->shipmentDetails->notification = new Struct\Notification();
-            $request->shipmentOrder->shipment->shipmentDetails->notification->recipientEmailAddress = $this->getReceiverEmail();
+            $request->ShipmentOrder->Shipment->ShipmentDetails->Notification = new Struct\Notification();
+            $request->ShipmentOrder->Shipment->ShipmentDetails->Notification->recipientEmailAddress = $this->getReceiverEmail();
         }
 
         // BankData
         if (null !== $this->getBankData()) {
-            $request->shipmentOrder->shipment->shipmentDetails->bankData = $this->getBankData()->getStruct();
+            $request->ShipmentOrder->Shipment->ShipmentDetails->BankData = $this->getBankData()->getStruct();
         }
 
         // Shipper
-        $request->shipmentOrder->shipment->shipper = $this->getSender()->getStruct();
+        $request->ShipmentOrder->Shipment->Shipper = $this->getSender()->getStruct();
 
         // Receiver
-        $request->shipmentOrder->shipment->receiver = $this->getReceiver()->getStruct();
+        $request->ShipmentOrder->Shipment->Receiver = $this->getReceiver()->getStruct();
 
         // Return-Receiver
         if ($this->getReturnReceiver() !== null) {
-            $request->shipmentOrder->shipment->returnReceiver = $this->getReturnReceiver()->getStruct();
+            $request->ShipmentOrder->Shipment->ReturnReceiver = $this->getReturnReceiver()->getStruct();
         }
 
         // Export-Document
         if ($this->getExportDocument() !== null) {
             try {
-                $request->shipmentOrder->shipment->exportDocument = $this->getExportDocument()->getStruct();
+                $request->ShipmentOrder->Shipment->ExportDocument = $this->getExportDocument()->getStruct();
             } catch (\Exception $e) {
                 $this->addError($e->getMessage());
             }
@@ -891,12 +891,12 @@ class BusinessShipment extends Version
 
         // Other Settings
         if ($this->getPrintOnlyIfReceiverIsValid() !== null) {
-            $request->shipmentOrder->printOnlyIfCodeable = new Struct\PrintOnlyIfCodeable();
-            $request->shipmentOrder->printOnlyIfCodeable->active = (int) $this->getPrintOnlyIfReceiverIsValid();
+            $request->ShipmentOrder->PrintOnlyIfCodeable = new Struct\PrintOnlyIfCodeable();
+            $request->ShipmentOrder->PrintOnlyIfCodeable->active = (int) $this->getPrintOnlyIfReceiverIsValid();
         }
 
         if ($this->getLabelResponseType() !== null) {
-            $request->shipmentOrder->labelResponseType = $this->getLabelResponseType();
+            $request->ShipmentOrder->labelResponseType = $this->getLabelResponseType();
         }
 
         return $request;

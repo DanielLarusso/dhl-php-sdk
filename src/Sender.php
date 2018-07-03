@@ -29,61 +29,61 @@ class Sender extends SendPerson
         $shipper = new Struct\Shipper;
 
         // Set Name
-        $shipper->name = new Struct\Name;
-        $shipper->name->name1 = $this->getName();
+        $shipper->Name = new Struct\Name;
+        $shipper->Name->name1 = $this->getName();
 
         if (null !== $this->getName2()) {
-            $shipper->name->name2 = $this->getName2();
+            $shipper->Name->name2 = $this->getName2();
         }
 
         if (null !== $this->getName3()) {
-            $shipper->name->name3 = $this->getName3();
+            $shipper->Name->name3 = $this->getName3();
         }
 
         // Address
-        $shipper->address = new Struct\Address();
-        $shipper->address->streetName = $this->getStreetName();
-        $shipper->address->streetNumber = $this->getStreetNumber();
+        $shipper->Address = new Struct\Address();
+        $shipper->Address->streetName = $this->getStreetName();
+        $shipper->Address->streetNumber = $this->getStreetNumber();
 
         if (null !== $this->getAddressAddition()) {
-            $shipper->address->addressAddition = $this->getAddressAddition();
+            $shipper->Address->addressAddition = $this->getAddressAddition();
         }
 
         if (null !== $this->getDispatchingInfo()) {
-            $shipper->address->dispatchingInformation = $this->getDispatchingInfo();
+            $shipper->Address->dispatchingInformation = $this->getDispatchingInfo();
         }
 
-        $shipper->address->zip = $this->getZip();
-        $shipper->address->city = $this->getLocation();
+        $shipper->Address->zip = $this->getZip();
+        $shipper->Address->city = $this->getLocation();
 
         // Origin
         if (null !== $this->getCountryISOCode()) {
-            $shipper->address->origin = new Struct\Origin();
+            $shipper->Address->Origin = new Struct\Origin();
 
             if (null !== $this->getCountry()) {
-                $shipper->address->origin->country = $this->getCountry();
+                $shipper->Address->Origin->country = $this->getCountry();
             }
 
-            $shipper->address->origin->countryISOCode = $this->getCountryISOCode();
+            $shipper->Address->Origin->countryISOCode = $this->getCountryISOCode();
 
             if (null !== $this->getState()) {
-                $shipper->address->origin->state = $this->getState();
+                $shipper->Address->Origin->state = $this->getState();
             }
         }
 
         // Communication
-        $shipper->communication = new Struct\Communication();
+        $shipper->Communication = new Struct\Communication();
 
         if (null !== $this->getPhone()) {
-            $shipper->communication->phone = $this->getPhone();
+            $shipper->Communication->phone = $this->getPhone();
         }
 
         if (null !== $this->getEmail()) {
-            $shipper->communication->email = $this->getEmail();
+            $shipper->Communication->email = $this->getEmail();
         }
 
         if (null !== $this->getContactPerson()) {
-            $shipper->communication->contactPerson = $this->getContactPerson();
+            $shipper->Communication->contactPerson = $this->getContactPerson();
         }
 
         return $shipper;
