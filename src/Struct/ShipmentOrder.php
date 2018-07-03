@@ -17,12 +17,12 @@ class ShipmentOrder
     /**
      * @var Shipment
      */
-    public $shipment;
+    public $Shipment;
 
     /**
      * @var PrintOnlyIfCodeable
      */
-    public $printOnlyIfCodeable;
+    public $PrintOnlyIfCodeable;
 
     /**
      * @var string

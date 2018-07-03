@@ -6,10 +6,7 @@ namespace DanielLarusso\DHL\Struct;
  * Class PackagingReturn
  * @package DanielLarusso\DHL\Struct
  */
-class PackagingReturn
+class PackagingReturn extends ActiveAbstract
 {
-    /**
-     * @var int
-     */
-    public $active;
+
 }

@@ -11,25 +11,25 @@ class Shipment
     /**
      * @var ShipmentDetails
      */
-    public $shipmentDetails;
+    public $ShipmentDetails;
 
     /**
      * @var Shipper
      */
-    public $shipper;
+    public $Shipper;
 
     /**
      * @var Receiver
      */
-    public $receiver;
+    public $Receiver;
 
     /**
      * @var ReturnReceiver
      */
-    public $returnReceiver;
+    public $ReturnReceiver;
 
     /**
      * @var ExportDocument
      */
-    public $exportDocument;
+    public $ExportDocument;
 }

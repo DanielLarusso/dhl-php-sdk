@@ -11,115 +11,115 @@ class Service
     /**
      * @var DayOfDelivery
      */
-    public $dayOfDelivery;
+    public $DayOfDelivery;
 
     /**
      * @var DeliveryTimeframe
      */
-    public $deliveryTimeframe;
+    public $DeliveryTimeframe;
 
     /**
      * @var PreferredTime
      */
-    public $preferredTime;
+    public $PreferredTime;
 
     /**
      * @var IndividualSenderRequirement
      */
-    public $individualSenderRequirement;
+    public $IndividualSenderRequirement;
 
     /**
      * @var PackagingReturn
      */
-    public $packagingReturn;
+    public $PackagingReturn;
 
     /**
      * @var ReturnImmediately
      */
-    public $returnImmediately;
+    public $ReturnImmediately;
 
     /**
      * @var NoticeOfNonDeliverability
      */
-    public $noticeOfNonDeliverability;
+    public $NoticeOfNonDeliverability;
 
     /**
      * @var ShipmentHandling
      */
-    public $shipmentHandling;
+    public $ShipmentHandling;
 
     /**
      * @var Endorsement
      */
-    public $endorsement;
+    public $Endorsement;
 
     /**
      * @var VisualCheckOfAge
      */
-    public $visualCheckOfAge;
+    public $VisualCheckOfAge;
 
     /**
      * @var PreferredLocation
      */
-    public $preferredLocation;
+    public $PreferredLocation;
 
     /**
      * @var PreferredNeighbour
      */
-    public $preferredNeighbour;
+    public $PreferredNeighbour;
 
     /**
      * @var PreferredDay
      */
-    public $preferredDay;
+    public $PreferredDay;
 
     /**
      * @var Perishables
      */
-    public $perishables;
+    public $Perishables;
 
     /**
      * @var Personally
      */
-    public $personally;
+    public $Personally;
 
     /**
      * @var NoNeighbourDelivery
      */
-    public $noNeighbourDelivery;
+    public $NoNeighbourDelivery;
 
     /**
      * @var NamedPersonOnly
      */
-    public $namedPersonOnly;
+    public $NamedPersonOnly;
 
     /**
      * @var ReturnReceipt
      */
-    public $returnReceipt;
+    public $ReturnReceipt;
 
     /**
      * @var Premium
      */
-    public $premium;
+    public $Premium;
 
     /**
      * @var CashOnDelivery
      */
-    public $cashOnDelivery;
+    public $CashOnDelivery;
 
     /**
      * @var AdditionalInsurance
      */
-    public $additionalInsurance;
+    public $AdditionalInsurance;
 
     /**
      * @var BulkyGoods
      */
-    public $bulkyGoods;
+    public $BulkyGoods;
 
     /**
      * @var IdentCheck
      */
-    public $identCheck;
+    public $IdentCheck;
 }

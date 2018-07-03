@@ -51,10 +51,10 @@ class ExportDocument
     /**
      * @var WitchElectronicExportNtfctn
      */
-    public $withElectronicExportNtfctn;
+    public $WithElectronicExportNtfctn;
 
     /**
      * @var ExportDocPosition[]
      */
-    public $exportDocPosition;
+    public $ExportDocPosition;
 }

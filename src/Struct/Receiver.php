@@ -16,10 +16,10 @@ class Receiver
     /**
      * @var Address
      */
-    public $address;
+    public $Address;
 
     /**
      * @var Communication
      */
-    public $communication;
+    public $Communication;
 }

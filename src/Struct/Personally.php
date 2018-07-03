@@ -6,10 +6,6 @@ namespace DanielLarusso\DHL\Struct;
  * Class Personally
  * @package DanielLarusso\DHL\Struct
  */
-class Personally
+class Personally extends ActiveAbstract
 {
-    /**
-     * @var int
-     */
-    public $active;
 }

@@ -11,10 +11,10 @@ class ShipmentRequest
     /**
      * @var Version
      */
-    public $version;
+    public $Version;
 
     /**
      * @var ShipmentOrder
      */
-    public $shipmentOrder;
+    public $ShipmentOrder;
 }

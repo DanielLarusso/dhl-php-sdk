@@ -11,5 +11,5 @@ class IdentCheck extends ActiveAbstract
     /**
      * @var Ident
      */
-    public $ident;
+    public $Ident;
 }

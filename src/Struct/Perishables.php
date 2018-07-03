@@ -6,10 +6,7 @@ namespace DanielLarusso\DHL\Struct;
  * Class Perishables
  * @package DanielLarusso\DHL\Struct
  */
-class Perishables
+class Perishables extends ActiveAbstract
 {
-    /**
-     * @var int
-     */
-    public $active;
+
 }

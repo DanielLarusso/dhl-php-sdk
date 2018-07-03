@@ -41,20 +41,20 @@ class ShipmentDetails
     /**
      * @var ShipmentItem
      */
-    public $shipmentItem;
+    public $ShipmentItem;
 
     /**
      * @var Service
      */
-    public $service;
+    public $Service;
 
     /**
      * @var Notification
      */
-    public $notification;
+    public $Notification;
 
     /**
      * @var BankData
      */
-    public $bankData;
+    public $BankData;
 }

@@ -51,5 +51,5 @@ class Address
     /**
      * @var Origin
      */
-    public $origin;
+    public $Origin;
 }

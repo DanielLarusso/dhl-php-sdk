@@ -11,15 +11,15 @@ class Shipper
     /**
      * @var Name
      */
-    public $name;
+    public $Name;
 
     /**
      * @var Address
      */
-    public $address;
+    public $Address;
 
     /**
      * @var Communication
      */
-    public $communication;
+    public $Communication;
 }
