@@ -70,6 +70,8 @@ class IdentCheck
      * Get the Ident-DHL-Class
      *
      * @return \stdClass - Ident-DHL-Class
+     *
+     * @deprecated
      */
     public function getIdentClass_v2(): \stdClass
     {
@@ -79,6 +81,23 @@ class IdentCheck
         $class->givenName = $this->firstName;
         $class->dateOfBirth = $this->birthday;
         $class->minimumAge = $this->minimumAge;
+
+        return $class;
+    }
+
+    /**
+     * Get the Ident-DHL-Class
+     *
+     * @return Struct\Ident - Ident-DHL-Class
+     */
+    public function getIdentStruct(): Struct\Ident
+    {
+        /** @var Struct\Ident $class */
+        $ident = new Struct\Ident();
+        $ident->surname = $this->lastName;
+        $ident->givenName = $this->firstName;
+        $ident->dateOfBirth = $this->birthday;
+        $ident->minimumAge = $this->minimumAge;
 
         return $class;
     }

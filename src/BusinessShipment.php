@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 namespace DanielLarusso\DHL;
+use DanielLarusso\DHL\Struct\ShipmentRequest;
 
 /**
  * Class BusinessShipment
@@ -105,7 +106,7 @@ class BusinessShipment extends Version
      *
      * @var BankData|null $bank - Bank-Object
      */
-    private $bank;
+    private $bankData;
 
     /**
      * Contains the Sender-Object
@@ -433,18 +434,18 @@ class BusinessShipment extends Version
     /**
      * @return BankData|null
      */
-    public function getBank(): ?BankData
+    public function getBankData(): ?BankData
     {
-        return $this->bank;
+        return $this->bankData;
     }
 
     /**
      * @param BankData|null $bankData
      * @return BusinessShipment
      */
-    public function setBank(?BankData $bankData): BusinessShipment
+    public function setBankData(?BankData $bankData): BusinessShipment
     {
-        $this->bank = $bankData;
+        $this->bankData = $bankData;
 
         return $this;
     }
@@ -752,6 +753,8 @@ class BusinessShipment extends Version
     }
 
     /**
+     * todo: refactor to Struct
+     *
      * Creates the Data-Object for Manifest
      *
      * @param string $shipmentNumber - Shipment-Number for the Manifest
@@ -789,7 +792,7 @@ class BusinessShipment extends Version
      *
      * @return bool|Response - false on error or DHL-Response Object
      */
-    public function createShipment()
+    public function createShipmentRequest()
     {
         switch ($this->getMayor()) {
             case 1:
@@ -797,10 +800,8 @@ class BusinessShipment extends Version
                 break;
             case 2:
             default:
-                $data = $this->createShipmentClass_v2();
+                $data = $this->createShipmentRequestStruct();
         }
-
-        $response = null;
 
         // Create Shipment
         try {
@@ -835,53 +836,54 @@ class BusinessShipment extends Version
     }
 
     /**
-     * Creates the Data-Object for the Request
+     * Creates the Struct for the Request
      *
-     * @return \stdClass - Data-Object
+     * @return Struct\ShipmentRequest - Data-Object
      */
-    private function createShipmentClass_v2(): \stdClass
+    private function createShipmentRequestStruct(): Struct\ShipmentRequest
     {
-        /** @var \stdClass $data */
-        $data = new \stdClass;
-        $data->Version = $this->getVersionClass();
-        $data->ShipmentOrder = new \stdClass;
-        $data->ShipmentOrder->sequenceNumber = $this->getSequenceNumber();
+        /** @var ShipmentRequest $request */
+        $request = new Struct\ShipmentRequest();
+
+        $request->version = $this->getVersionStruct();
+        $request->shipmentOrder = new Struct\ShipmentOrder();
+        $request->shipmentOrder->sequenceNumber = $this->getSequenceNumber();
 
         // Shipment
-        $data->ShipmentOrder->Shipment = new \stdClass;
-        $data->ShipmentOrder->Shipment->ShipmentDetails = $this->getShipmentDetails()->getShipmentDetailsClass_v2();
+        $request->shipmentOrder->shipment = new Struct\Shipment();
+        $request->shipmentOrder->shipment->shipmentDetails = $this->getShipmentDetails()->getStruct();
 
         // Service
-        if ($this->getService() !== null) {
-            $data->ShipmentOrder->Shipment->ShipmentDetails->Service = $this->getService()->getServiceClass_v2($this->getShipmentDetails()->getProduct());
+        if (null !== $this->getService()) {
+            $request->shipmentOrder->shipment->shipmentDetails->service = $this->getService()->getStruct($this->getShipmentDetails()->getProduct());
         }
 
         // Notification
-        if ($this->getReceiverEmail() !== null) {
-            $data->ShipmentOrder->Shipment->ShipmentDetails->Notification = new \stdClass;
-            $data->ShipmentOrder->Shipment->ShipmentDetails->Notification->recipientEmailAddress = $this->getReceiverEmail();
+        if (null !== $this->getReceiverEmail()) {
+            $request->shipmentOrder->shipment->shipmentDetails->notification = new Struct\Notification();
+            $request->shipmentOrder->shipment->shipmentDetails->notification->recipientEmailAddress = $this->getReceiverEmail();
         }
 
-        // Bank-Data
-        if ($this->getBank() !== null) {
-            $data->ShipmentOrder->Shipment->ShipmentDetails->BankData = $this->getBank()->getBankClass_v2();
+        // BankData
+        if (null !== $this->getBankData()) {
+            $request->shipmentOrder->shipment->shipmentDetails->bankData = $this->getBankData()->getStruct();
         }
 
         // Shipper
-        $data->ShipmentOrder->Shipment->Shipper = $this->getSender()->getClass_v2();
+        $request->shipmentOrder->shipment->shipper = $this->getSender()->getStruct();
 
         // Receiver
-        $data->ShipmentOrder->Shipment->Receiver = $this->getReceiver()->getClass_v2();
+        $request->shipmentOrder->shipment->receiver = $this->getReceiver()->getStruct();
 
         // Return-Receiver
         if ($this->getReturnReceiver() !== null) {
-            $data->ShipmentOrder->Shipment->ReturnReceiver = $this->getReturnReceiver()->getClass_v2();
+            $request->shipmentOrder->shipment->returnReceiver = $this->getReturnReceiver()->getStruct();
         }
 
         // Export-Document
         if ($this->getExportDocument() !== null) {
             try {
-                $data->ShipmentOrder->Shipment->ExportDocument = $this->getExportDocument()->getExportDocumentClass_v2();
+                $request->shipmentOrder->shipment->exportDocument = $this->getExportDocument()->getStruct();
             } catch (\Exception $e) {
                 $this->addError($e->getMessage());
             }
@@ -889,15 +891,15 @@ class BusinessShipment extends Version
 
         // Other Settings
         if ($this->getPrintOnlyIfReceiverIsValid() !== null) {
-            $data->ShipmentOrder->PrintOnlyIfCodeable = new \stdClass;
-            $data->ShipmentOrder->PrintOnlyIfCodeable->active = (int)$this->getPrintOnlyIfReceiverIsValid();
+            $request->shipmentOrder->printOnlyIfCodeable = new Struct\PrintOnlyIfCodeable();
+            $request->shipmentOrder->printOnlyIfCodeable->active = (int) $this->getPrintOnlyIfReceiverIsValid();
         }
 
         if ($this->getLabelResponseType() !== null) {
-            $data->ShipmentOrder->labelResponseType = $this->getLabelResponseType();
+            $request->shipmentOrder->labelResponseType = $this->getLabelResponseType();
         }
 
-        return $data;
+        return $request;
     }
 
     /**
@@ -1165,7 +1167,7 @@ class BusinessShipment extends Version
                 break;
             case 2:
             default:
-                $data = $this->createShipmentClass_v2();
+                $data = $this->createShipmentRequestStruct();
         }
 
         try {

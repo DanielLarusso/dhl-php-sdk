@@ -115,6 +115,8 @@ abstract class Version
      * Returns the Version DHL-Class
      *
      * @return \stdClass - Version DHL-Class
+     *
+     * @deprecated
      */
     protected function getVersionClass(): \stdClass
     {
@@ -125,6 +127,22 @@ abstract class Version
         $class->minorRelease = $this->getMinor();
 
         return $class;
+    }
+
+    /**
+     * Returns the Version DHL-Class
+     *
+     * @return Struct\Version - Version DHL-Class
+     */
+    protected function getVersionStruct(): Struct\Version
+    {
+        /** @var Struct\Version $version */
+        $version = new Struct\Version();
+
+        $version->majorRelease = $this->getMayor();
+        $version->minorRelease = $this->getMinor();
+
+        return $version;
     }
 
     /**

@@ -110,7 +110,7 @@ $dhl
     ->setLabelResponseType(DHL\BusinessShipment::RESPONSE_TYPE_URL);
 
 /** @var DHL\Response|bool $response */
-$response = $dhl->createShipment(); // Creates the request
+$response = $dhl->createShipmentRequest(); // Creates the request
 
 // For deletion you just need the shipment number and credentials
 // $dhlDel = new BusinessShipment($credentials, $testModus, $version);

@@ -167,10 +167,10 @@ abstract class Address
     }
 
     /**
-     * @param null|string $addressAddition
+     * @param string $addressAddition
      * @return Address
      */
-    public function setAddressAddition(?string $addressAddition): Address
+    public function setAddressAddition(string $addressAddition): Address
     {
         $this->addressAddition = $addressAddition;
 
@@ -186,10 +186,10 @@ abstract class Address
     }
 
     /**
-     * @param null|string $dispatchingInfo
+     * @param string $dispatchingInfo
      * @return Address
      */
-    public function setDispatchingInfo(?string $dispatchingInfo): Address
+    public function setDispatchingInfo(string $dispatchingInfo): Address
     {
         $this->dispatchingInfo = $dispatchingInfo;
 
@@ -266,10 +266,10 @@ abstract class Address
     }
 
     /**
-     * @param string|null $country
+     * @param string $country
      * @return Address
      */
-    final public function setCountry(?string $country): Address
+    final public function setCountry(string $country): Address
     {
         $this->country = $country;
 
@@ -285,10 +285,10 @@ abstract class Address
     }
 
     /**
-     * @param string|null $countryISOCode
+     * @param string $countryISOCode
      * @return Address
      */
-    final public function setCountryISOCode(?string $countryISOCode): Address
+    public function setCountryISOCode(string $countryISOCode): Address
     {
         $this->countryISOCode = $countryISOCode;
 
@@ -304,36 +304,12 @@ abstract class Address
     }
 
     /**
-     * @param null|string $state
+     * @param string $state
      * @return Address
      */
-    public function setState(?string $state): Address
+    public function setState(string $state): Address
     {
         $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Sets Street-Name and Number by Address String
-     *
-     * Found here: https://www.tricd.de/php/php-strassenname-und-hausnummer-mit-php-parsen/
-     *
-     * @param string $street - Address (Street plus number)
-     * @return Address
-     *
-     * @deprecated non-sense method. Will be removed soon!
-     */
-    final public function setFullStreet(string $street): Address
-    {
-        $match = array();
-
-        preg_match('/^([^\d]*[^\d\s]) *(\d.*)$/', $street, $match);
-
-        if (count($match) == 0) return $this;
-
-        $this->setStreetName($match[1]);
-        $this->setStreetNumber($match[2]);
 
         return $this;
     }

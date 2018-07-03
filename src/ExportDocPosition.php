@@ -236,20 +236,20 @@ class ExportDocPosition
     /**
      * Returns a Class for ExportDocPosition
      *
-     * @return \stdClass - DHL-ExportDocPosition-Class
+     * @return Struct\ExportDocPosition - DHL-ExportDocPosition-Class
      */
-    public function getExportDocPositionClass_v2(): \stdClass
+    public function getStruct(): Struct\ExportDocPosition
     {
-        /** @var \stdClass $class */
-        $class = new \stdClass;
+        /** @var Struct\ExportDocPosition $class */
+        $exportDocPosition = new Struct\ExportDocPosition;
 
-        $class->description = $this->getDescription();
-        $class->countryCodeOrigin = $this->getCountryCodeOrigin();
-        $class->customsTariffNumber = $this->getCustomsTariffNumber();
-        $class->amount = $this->getAmount();
-        $class->netWeightInKG = $this->getNetWeightInKG();
-        $class->customsValue = $this->getCustomsValue();
+        $exportDocPosition->description = $this->getDescription();
+        $exportDocPosition->countryCodeOrigin = $this->getCountryCodeOrigin();
+        $exportDocPosition->customsTariffNumber = $this->getCustomsTariffNumber();
+        $exportDocPosition->amount = $this->getAmount();
+        $exportDocPosition->netWeightInKG = $this->getNetWeightInKG();
+        $exportDocPosition->customsValue = $this->getCustomsValue();
 
-        return $class;
+        return $exportDocPosition;
     }
 }

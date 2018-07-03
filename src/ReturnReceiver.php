@@ -21,68 +21,68 @@ class ReturnReceiver extends SendPerson
     /**
      * Returns a Class for the DHL-SendPerson
      *
-     * @return \stdClass - DHL-SendPerson-class
+     * @return Struct\ReturnReceiver - DHL-SendPerson-class
      */
-    public function getClass_v2(): \stdClass
+    public function getStruct(): Struct\ReturnReceiver
     {
-        /** @var \stdClass $class */
-        $class = new \stdClass;
+        /** @var Struct\ReturnReceiver $returnReceiver */
+        $returnReceiver = new Struct\ReturnReceiver;
 
         // Name
-        $class->Name = new \stdClass;
-        $class->Name->name1 = $this->getName();
+        $returnReceiver->name = new Struct\Name;
+        $returnReceiver->name->name1 = $this->getName();
 
         if (null !== $this->getName2()) {
-            $class->Name->name2 = $this->getName2();
+            $returnReceiver->name->name2 = $this->getName2();
         }
 
         if (null !== $this->getName3()) {
-            $class->Name->name3 = $this->getName3();
+            $returnReceiver->name->name3 = $this->getName3();
         }
 
         // Address
-        $class->Address = new \stdClass;
-        $class->Address->streetName = $this->getStreetName();
-        $class->Address->streetNumber = $this->getStreetNumber();
+        $returnReceiver->address = new Struct\Address();
+        $returnReceiver->address->streetName = $this->getStreetName();
+        $returnReceiver->address->streetNumber = $this->getStreetNumber();
 
         if (null !== $this->getAddressAddition()) {
-            $class->Address->addressAddition = $this->getAddressAddition();
+            $returnReceiver->address->addressAddition = $this->getAddressAddition();
         }
 
         if (null !== $this->getDispatchingInfo()) {
-            $class->Address->dispatchingInformation = $this->getDispatchingInfo();
+            $returnReceiver->address->dispatchingInformation = $this->getDispatchingInfo();
         }
 
-        $class->Address->zip = $this->getZip();
-        $class->Address->city = $this->getLocation();
+        $returnReceiver->address->zip = $this->getZip();
+        $returnReceiver->address->city = $this->getLocation();
 
         // Origin
         if (null !== $this->getCountryISOCode()) {
-            $class->Address->Origin = new \stdClass;
+            $returnReceiver->address->origin = new Struct\Origin();
 
             if (null !== $this->getCountry()) {
-                $class->Address->Origin->country = $this->getCountry();
+                $returnReceiver->address->origin->country = $this->getCountry();
             }
 
-            $class->Address->Origin->countryISOCode = $this->getCountryISOCode();
+            $returnReceiver->address->origin->countryISOCode = $this->getCountryISOCode();
 
             if (null !== $this->getState()) {
-                $class->Address->Origin->state = $this->getState();
+                $returnReceiver->address->origin->state = $this->getState();
             }
         }
 
         // Communication
-        $class->Communication = new \stdClass;
+        $returnReceiver->communication = new Struct\Communication();
         if (null !== $this->getPhone()) {
-            $class->Communication->phone = $this->getPhone();
+            $returnReceiver->communication->phone = $this->getPhone();
         }
         if (null !== $this->getEmail()) {
-            $class->Communication->email = $this->getEmail();
+            $returnReceiver->communication->email = $this->getEmail();
         }
         if (null !== $this->getContactPerson()) {
-            $class->Communication->contactPerson = $this->getContactPerson();
+            $returnReceiver->communication->contactPerson = $this->getContactPerson();
         }
 
-        return $class;
+        return $returnReceiver;
     }
 }

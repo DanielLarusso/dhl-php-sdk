@@ -422,6 +422,8 @@ class ShipmentDetails
      * Returns an DHL-Class of this Object for DHL-Shipment Details
      *
      * @return \stdClass - ShipmentDetailsClass
+     *
+     * @deprecated
      */
     public function getShipmentDetailsClass_v2(): \stdClass
     {
@@ -453,5 +455,50 @@ class ShipmentDetails
         }
 
         return $class;
+    }
+
+    /**
+     * Returns an DHL-Class of this Object for DHL-Shipment Details
+     *
+     * @return Struct\ShipmentDetails - ShipmentDetailsClass
+     */
+    public function getStruct(): Struct\ShipmentDetails
+    {
+        /** @var Struct\ShipmentDetails $shipmentDetails */
+        $shipmentDetails = new Struct\ShipmentDetails();
+
+        $shipmentDetails->product = $this->getProduct();
+        $shipmentDetails->accountNumber = $this->getAccountNumber();
+
+        if (null !== $this->getCustomerReference()) {
+            $shipmentDetails->customerReference = $this->getCustomerReference();
+        }
+
+        $shipmentDetails->shipmentDate = $this->getShipmentDate();
+
+        if (null !== $this->getReturnAccountNumber()) {
+            $shipmentDetails->returnShipmentAccountNumber = $this->getReturnAccountNumber();
+        }
+
+        if (null !== $this->getReturnReference()) {
+            $shipmentDetails->returnShipmentReference = $this->getReturnReference();
+        }
+
+        $shipmentDetails->shipmentItem = new Struct\ShipmentItem();
+        $shipmentDetails->shipmentItem->weightInKG = $this->getWeight();
+
+        if (null !== $this->getLength()) {
+            $shipmentDetails->shipmentItem->lengthInCM = $this->getLength();
+        }
+
+        if (null !== $this->getWidth()) {
+            $shipmentDetails->shipmentItem->widthInCM = $this->getWidth();
+        }
+
+        if (null !== $this->getHeight()) {
+            $shipmentDetails->shipmentItem->heightInCM = $this->getHeight();
+        }
+
+        return $shipmentDetails;
     }
 }

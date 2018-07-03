@@ -163,10 +163,10 @@ class BankData
     }
 
     /**
-     * @param null|string $note1
+     * @param string $note1
      * @return BankData
      */
-    public function setNote1(?string $note1): BankData
+    public function setNote1(string $note1): BankData
     {
         $this->note1 = $note1;
 
@@ -182,10 +182,10 @@ class BankData
     }
 
     /**
-     * @param null|string $note2
+     * @param string $note2
      * @return BankData
      */
-    public function setNote2(?string $note2): BankData
+    public function setNote2(string $note2): BankData
     {
         $this->note2 = $note2;
 
@@ -201,10 +201,10 @@ class BankData
     }
 
     /**
-     * @param null|string $bic
+     * @param string $bic
      * @return BankData
      */
-    public function setBic(?string $bic): BankData
+    public function setBic(string $bic): BankData
     {
         $this->bic = $bic;
 
@@ -220,10 +220,10 @@ class BankData
     }
 
     /**
-     * @param null|string $accountReference
+     * @param string $accountReference
      * @return BankData
      */
-    public function setAccountReference(?string $accountReference): BankData
+    public function setAccountReference(string $accountReference): BankData
     {
         $this->accountReference = $accountReference;
 
@@ -233,32 +233,33 @@ class BankData
     /**
      * Returns a DHL-Bank-Class
      *
-     * @return \stdClass - DHL-Bank-Class
+     * @return Struct\BankData - DHL-Bank-Class
      */
-    public function getBankClass_v2(): \stdClass
+    public function getStruct(): Struct\BankData
     {
-        $class = new \stdClass;
+        /** @var Struct\BankData $bankData */
+        $bankData = new Struct\BankData();
 
-        $class->accountOwner = $this->getAccountOwnerName();
-        $class->bankName = $this->getBankName();
-        $class->iban = $this->getIban();
+        $bankData->accountOwner = $this->getAccountOwnerName();
+        $bankData->bankName = $this->getBankName();
+        $bankData->iban = $this->getIban();
 
         if ($this->getNote1() !== null) {
-            $class->note1 = $this->getNote1();
+            $bankData->note1 = $this->getNote1();
         }
 
         if ($this->getNote2() !== null) {
-            $class->note2 = $this->getNote2();
+            $bankData->note2 = $this->getNote2();
         }
 
         if ($this->getBic() !== null) {
-            $class->bic = $this->getBic();
+            $bankData->bic = $this->getBic();
         }
 
         if ($this->getAccountReference() !== null) {
-            $class->accountreference = $this->getAccountReference();
+            $bankData->accountreference = $this->getAccountReference();
         }
 
-        return $class;
+        return $bankData;
     }
 }

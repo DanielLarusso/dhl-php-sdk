@@ -384,62 +384,62 @@ class ExportDocument
     /**
      * Returns a Class for Export-Document
      *
-     * @return \stdClass - DHL-ExportDocument-Class
+     * @return Struct\ExportDocument - DHL-ExportDocument-Class
      * @throws \RuntimeException - Invalid Data-Exception
      */
-    public function getExportDocumentClass_v2(): \stdClass
+    public function getStruct(): Struct\ExportDocument
     {
-        /** @var \stdClass $class */
-        $class = new \stdClass;
+        /** @var Struct\ExportDocument $exportDocument */
+        $exportDocument = new Struct\ExportDocument;
 
         // Standard-Export-Stuff
         if (null !== $this->getInvoiceNumber()) {
-            $class->invoiceNumber = $this->getInvoiceNumber();
+            $exportDocument->invoiceNumber = $this->getInvoiceNumber();
         }
 
-        $class->exportType = $this->getExportType();
+        $exportDocument->exportType = $this->getExportType();
 
         if (null !== $this->getExportTypeDescription()) {
-            $class->exportTypeDescription = $this->getExportTypeDescription();
+            $exportDocument->exportTypeDescription = $this->getExportTypeDescription();
         } else if ($this->getExportType() === self::EXPORT_TYPE_OTHER) {
             throw new \RuntimeException('ExportTypeDescription must filled out if Export-Type is OTHER! - ' .
                 'Export-Class will not generated now');
         }
 
         if (null !== $this->getTermsOfTrade()) {
-            $class->termsOfTrade = $this->getTermsOfTrade();
+            $exportDocument->termsOfTrade = $this->getTermsOfTrade();
         }
 
-        $class->placeOfCommital = $this->getPlaceOfCommittal();
-        $class->additionalFee = $this->getAdditionalFee();
+        $exportDocument->placeOfCommital = $this->getPlaceOfCommittal();
+        $exportDocument->additionalFee = $this->getAdditionalFee();
 
         if (null !== $this->getPermitNumber()) {
-            $class->permitNumber = $this->getPermitNumber();
+            $exportDocument->permitNumber = $this->getPermitNumber();
         }
 
         if (null !== $this->getAttestationNumber()) {
-            $class->attestationNumber = $this->getAttestationNumber();
+            $exportDocument->attestationNumber = $this->getAttestationNumber();
         }
 
         // Add rest (Elements)
         if (null !== $this->getWithElectronicExportNotification()) {
-            $class->WithElectronicExportNtfctn = new \stdClass;
-            $class->WithElectronicExportNtfctn->active = (int)$this->getWithElectronicExportNotification();
+            $exportDocument->withElectronicExportNtfctn = new Struct\WitchElectronicExportNtfctn();
+            $exportDocument->withElectronicExportNtfctn->active = (int) $this->getWithElectronicExportNotification();
         }
 
         // Check if child-class is being used
         if (null !== $this->getExportDocPosition()) {
-            // Handle non-arrays... (Backward compatibility)
-            if (!is_array($this->getExportDocPosition())) {
-                $class->ExportDocPosition = $this->getExportDocPosition()->getExportDocPositionClass_v2();
-            } else {
-                $pos = $this->getExportDocPosition();
-                foreach ($pos as $key => &$exportDoc) {
-                    $class->ExportDocPosition[$key] = $exportDoc->getExportDocPositionClass_v2();
-                }
+            $pos = $this->getExportDocPosition();
+
+            /**
+             * @var $key
+             * @var ExportDocPosition $exportDoc
+             */
+            foreach ($pos as $key => &$exportDoc) {
+                $exportDocument->exportDocPosition[$key] = $exportDoc->getStruct();
             }
         }
 
-        return $class;
+        return $exportDocument;
     }
 }
