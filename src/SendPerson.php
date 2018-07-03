@@ -201,19 +201,4 @@ abstract class SendPerson extends Address
 
         return $this;
     }
-
-
-    /**
-     * Returns a Class for the DHL-SendPerson
-     *
-     * @return \stdClass - DHL-SendPerson-class
-     */
-    abstract public function getClass_v1();
-
-    /**
-     * Returns a Class for the DHL-SendPerson
-     *
-     * @return \stdClass - DHL-SendPerson-class
-     */
-    abstract public function getClass_v2();
 }
