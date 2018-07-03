@@ -73,14 +73,6 @@ abstract class SendPerson extends Address
     private $contactPerson;
 
     /**
-     * SendPerson constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Clears Memory
      */
     public function __destruct()

@@ -477,9 +477,9 @@ class Response extends Version
      * This function is not used here!
      *
      */
-    final protected function getAPIUrl(): void
+    final protected function getAPIUrl(): string
     {
-        // VOID - unused here
-        return null;
+        // unused here
+        return '';
     }
 }

@@ -595,6 +595,8 @@ class BusinessShipment extends Version
     public function setLabelResponseType(?string $labelResponseType): BusinessShipment
     {
         $this->labelResponseType = $labelResponseType;
+
+        return $this;
     }
 
     /**
